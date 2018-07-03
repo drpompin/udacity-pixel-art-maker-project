@@ -1,41 +1,33 @@
-// Select color input
-const colorInput = document.querySelector("#colorPicker");
 
-// Select size input
-const gridHeight = document.querySelector('#inputHeight');
-const gridWidth = document.querySelector('#inputWidth');
-const gridCanvas = document.querySelector('#pixelCanvas');
+function makeGrid() {
+    
+  const colorPicker = $('#colorPicker');
+  const inputHeight = $('#inputHeight').val();
+  const inputWidth = $('#inputWidth').val();
+  const pixelCanvas = $('#pixelCanvas');
+  
+  pixelCanvas.children().remove();
 
-// When a box is clicked, color it in
-function clickedBox(event) {
-  const color = colorInput.value;
-  event.target.style.backgroundColor = color;
+
+  for (var x = 0; x < inputHeight; x++) {
+      pixelCanvas.append('<tr></tr>');
+  }
+      
+  const tableRow = $('tr');
+  
+  for (var y = 0; y < inputWidth; y++) {
+      tableRow.append('<td></td>');
+  } 
+ 
+  pixelCanvas.find('td').click(function () {
+      const color = colorPicker.val();
+      $(this).attr('bgcolor', color);
+  });
 }
 
-// When size is submitted by the user, call makeGrid()
-function makeGrid() {
-  // Your code goes here!
-  gridCanvas.innerHTML = '';
+const sizePicker = $('#sizePicker');
 
-  // Create fragment to build the rows and columns on
-  const fragment = document.createDocumentFragment();
-
-  for (let x = 0; x < gridHeight.value; x++) {
-    const tr = document.createElement('tr');
-
-    for (let y = 0; y < gridWidth.value; y++) {
-      const td = document.createElement('td');
-      tr.appendChild(td);
-    }
-
-    tr.addEventListener('click', clickedBox);
-    fragment.appendChild(tr);
-  }
-  // Push fragment onto DOM
-  gridCanvas.appendChild(fragment);
-};
-
-document.querySelector('form').addEventListener('submit', function(event){
+sizePicker.submit(function(event) {
   event.preventDefault();
   makeGrid();
 });
