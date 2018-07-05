@@ -20,7 +20,7 @@ function makeGrid() {
         for (let x = 0; x < width; x++) {
             let column = row.insertCell(x);
             
-            $(column).click(function log() {
+            $(column).click(function () {
                 const color = colorPicker.val();
                 $(column).css('backgroundColor', color);
             })
