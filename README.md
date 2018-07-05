@@ -4,7 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
-* [Get Started](#Get started)
+* [Get Started](#getstarted)
 
 ## Instructions
 
@@ -16,7 +16,7 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
-##Get Started
+## Get Started
 
 In order to view this project, click on [Link](https://drpompin.github.io/udacity-pixel-art-maker-project/).
 
