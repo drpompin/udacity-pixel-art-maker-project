@@ -1,33 +1,31 @@
+const sizePicker = $('#sizePicker');
+const colorPicker = $('#colorPicker');
+const inputHeight = $('#inputHeight');
+const inputWidth = $('#inputWidth');
+const pixelCanvas = document.getElementById('pixelCanvas');
+
+sizePicker.submit(function(e) {
+    e.preventDefault();
+    makeGrid();
+});
 
 function makeGrid() {
-    
-  const colorPicker = $('#colorPicker');
-  const inputHeight = $('#inputHeight').val();
-  const inputWidth = $('#inputWidth').val();
-  const pixelCanvas = $('#pixelCanvas');
-  
-  pixelCanvas.children().remove();
+    pixelCanvas.innerHTML = '';
+    let height = inputHeight.val();
+    let width = inputWidth.val();
 
-
-  for (var x = 0; x < inputHeight; x++) {
-      pixelCanvas.append('<tr></tr>');
-  }
-      
-  const tableRow = $('tr');
-  
-  for (var y = 0; y < inputWidth; y++) {
-      tableRow.append('<td></td>');
-  } 
- 
-  pixelCanvas.find('td').click(function () {
-      const color = colorPicker.val();
-      $(this).attr('bgcolor', color);
-  });
+    for (let i = 0; i < height; i++) {
+        let row = pixelCanvas.insertRow(i);
+        
+        for (let x = 0; x < width; x++) {
+            let column = row.insertCell(x);
+            
+            $(column).click(function log() {
+                const color = colorPicker.val();
+                $(column).css('backgroundColor', color);
+            })
+        }
+        
+    }
 }
 
-const sizePicker = $('#sizePicker');
-
-sizePicker.submit(function(event) {
-  event.preventDefault();
-  makeGrid();
-});
